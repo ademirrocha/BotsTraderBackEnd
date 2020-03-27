@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\UserServices;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
 
 
 class UserController extends Controller
@@ -50,8 +51,23 @@ class UserController extends Controller
     public function store(Request $request)
     {
         try {
+
+            $store = $this->service->store($request->all());
+
+            if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password])){
+                $user = Auth::user();
+
+
+                $token = $user->createToken("useremail".'-'.now());
+            
+                return response()->json([
+                    'token' => $token->accessToken,
+                    $user
+                ]);
+            }   
+
             return response()->json(
-                $this->service->store($request->all()), 
+                $store, 
                 Response::HTTP_CREATED
             );
         } catch (\Exception $e) {

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Entities\Entradas;
 
 class ValidationEntrada

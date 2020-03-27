@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Entrada extends Model
 {
-    protected fillable = [
+    protected $fillable = [
         'ativo_id', 'trader', 'data'
-    ]
+    ];
 }

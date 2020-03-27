@@ -13,17 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(
-            'App\Repositories\UserRepositoryInterface', 
-            'App\Repositories\UserRepositoryEloquent',
-            'App\Repositories\TradeRepositoryInterface', 
-            'App\Repositories\TradeRepositoryEloquent',
-            'App\Repositories\EntradaRepositoryInterface', 
-            'App\Repositories\EntradaRepositoryEloquent',
-            'App\Repositories\AtivoRepositoryInterface', 
-            'App\Repositories\AtivoRepositoryEloquent'
-            
-        );
+
+        $this->app->register(RepositoryServiceProvider::class);
+        
     }
 
     /**
@@ -33,6 +25,22 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app->bind(
+            \App\Repositories\UserRepositoryInterface::class, 
+            \App\Repositories\UserRepositoryEloquent::class
+        );
+        $this->app->bind(
+            \App\Repositories\TradeRepositoryInterface::class, 
+            \App\Repositories\TradeRepositoryEloquent::class
+        );
+        $this->app->bind(
+            \App\Repositories\EntradaRepositoryInterface::class, 
+            \App\Repositories\EntradaRepositoryEloquent::class
+        );
+        $this->app->bind(
+            \App\Repositories\AtivoRepositoryInterface::class, 
+            \App\Repositories\AtivoRepositoryEloquent::class
+        );
+        
     }
 }

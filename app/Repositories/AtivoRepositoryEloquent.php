@@ -2,39 +2,47 @@
 
 namespace App\Repositories;
 
-use App\Entities\Ativos\Ativo;
+use Prettus\Repository\Eloquent\BaseRepository;
+use Prettus\Repository\Criteria\RequestCriteria;
+use App\Repositories\AtivoRepository;
+use App\Entities\Ativo;
+use App\Validators\AtivoValidator;
 
-class AtivoRepositoryEloquent implements AtivoRepositoryInterface
+/**
+ * Class AtivoRepositoryEloquent.
+ *
+ * @package namespace App\Repositories;
+ */
+class AtivoRepositoryEloquent extends BaseRepository implements AtivoRepository
 {
-    private $model;
-
-    public function __construct(Ativo $ativos)
+    /**
+     * Specify Model class name
+     *
+     * @return string
+     */
+    public function model()
     {
-        $this->model = $ativos;
+        return Ativo::class;
     }
 
-    public function index()
+    /**
+    * Specify Validator class name
+    *
+    * @return mixed
+    */
+    public function validator()
     {
-        return $this->model->all();
+
+        return AtivoValidator::class;
     }
 
-    public function get($id)
-    {
-        return $this->model->find($id);
-    }
 
-    public function store(array $data)
+    /**
+     * Boot up the repository, pushing criteria
+     */
+    public function boot()
     {
-        return $this->model->create($data);
+        $this->pushCriteria(app(RequestCriteria::class));
     }
-
-    public function update($id, array $data)
-    {
-        return $this->model->find($id)->update($data);
-    }
-
-    public function destroy($id)
-    {
-        return $this->model->find($id)->delete();
-    }
+    
 }

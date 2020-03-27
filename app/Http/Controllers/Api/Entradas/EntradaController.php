@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Services\EntradaServices;
 use Symfony\Component\HttpFoundation\Response;
 
-class Entrada extends Controller
+class EntradaController extends Controller
 {
     private $service;
 
@@ -19,6 +19,7 @@ class Entrada extends Controller
 
     public function index()
     {
+
         try {
             return response()->json($this->service->index(), Response::HTTP_OK);
         } catch (Exception $e) {
