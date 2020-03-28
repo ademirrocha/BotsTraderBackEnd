@@ -7,7 +7,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
-
+/**
+ * @OA\Server(url="https://auto-bot-trader-back-end.herokuapp.com/api")
+ */
 
 class User extends Authenticatable
 {
