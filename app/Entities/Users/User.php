@@ -23,7 +23,7 @@ class User extends Authenticatable
      *     summary="Mostrar usuarios",
      *     @OA\Response(
      *         response=200,
-     *         description="Mostrar todos los usuarios."
+     *         description="Mostrar todos os usuarios."
      *     ),
      *     @OA\Response(
      *         response="default",
