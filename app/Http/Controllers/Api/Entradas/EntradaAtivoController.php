@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Entradas;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\Entradas\EntradaAtivosServices;
+use Symfony\Component\HttpFoundation\Response;
 
 class EntradaAtivoController extends Controller
 {
