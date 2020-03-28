@@ -7,10 +7,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
+//auto-bot-trader-back-end.herokuapp.com
+
 /**
  * @OA\Info(title="API BotTrader", version="1.0")
  *
- * @OA\Server(url="https://auto-bot-trader-back-end.herokuapp.com")
+ * @OA\Server(url="http://localhost:8000/api")
  */
 
 class User extends Authenticatable
@@ -19,7 +21,7 @@ class User extends Authenticatable
 
     /**
      * @OA\Get(
-     *     path="/api/users",
+     *     path="/users",
      *     summary="Mostrar usuarios",
      *     @OA\Response(
      *         response=200,
@@ -29,7 +31,8 @@ class User extends Authenticatable
      *         response="default",
      *         description="Ha ocurrido un error."
      *     )
-     * )
+     * ),
+     * 
      */
 
     /**
@@ -37,6 +40,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+
     protected $fillable = [
         'id', 'name', 'email', 'password',
     ];
@@ -58,4 +62,67 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    /**
+     * @OA\Post(
+     *     path="/register",
+     *     summary="Cadastrar usuarios",
+     *       @OA\RequestBody(
+     *       description="List of user object",
+     *       required=true,
+     *       @OA\MediaType(
+     *           mediaType="multipart/form-data",
+     *     
+     *       )
+     *   ),
+     *       @OA\Parameter(
+     *     name="name",
+     *     required=true,
+     *     description="Nome de Usuário",
+     *      in="query",
+     *     @OA\Schema(
+     *         type="string"
+     *     )
+     *   ),
+     *    @OA\Parameter(
+     *     name="email",
+     *     required=true,
+     *     description="Email do Usuário",
+     *      in="query",
+     *     @OA\Schema(
+     *         type="string"
+     *     )
+     *   ),
+     *      @OA\Parameter(
+     *     name="password",
+     *     required=true,
+     *     description="Senha do Usuário",
+     *      in="query",
+     *     @OA\Schema(
+     *         type="string"
+     *     )
+     *   ),
+     *      @OA\Parameter(
+     *     name="password_confirmation",
+     *     required=true,
+     *     description="Confirmação da senha",
+     *      in="query",
+     *     @OA\Schema(
+     *         type="string"
+     *     )
+     *   ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Usuario Cadastrado co sucesso"
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *     )
+     * ),
+     * 
+     */
+
+
 }

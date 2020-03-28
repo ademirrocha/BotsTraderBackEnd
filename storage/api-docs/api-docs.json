@@ -6,16 +6,155 @@
     },
     "servers": [
         {
-            "url": "https://auto-bot-trader-back-end.herokuapp.com"
+            "url": "http://localhost:8000/api"
         }
     ],
     "paths": {
-        "/api/users": {
+        "/entradas/today": {
+            "get": {
+                "summary": "Mostrar entradas com respectivos Ativos",
+                "responses": {
+                    "200": {
+                        "description": "Mostrar entradas ."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/entradas/cadastro": {
+            "post": {
+                "summary": "Cadastrar entradas",
+                "operationId": "App\\Entities\\Entradas\\Entrada::ativos",
+                "parameters": [
+                    {
+                        "name": "ativo_id",
+                        "in": "query",
+                        "description": "Id do Ativo cadastrado no banco",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "trader",
+                        "in": "query",
+                        "description": "Tipo de Trader",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "default": "call",
+                                "enum": [
+                                    "call",
+                                    "put"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "data",
+                        "in": "query",
+                        "description": "Data da entrada - 0000-00-00",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    },
+                    {
+                        "name": "hora",
+                        "in": "query",
+                        "description": "Hora da Entrada - 00:00",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "List of user object",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {}
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Entrada Cadastrado com sucesso"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/users": {
             "get": {
                 "summary": "Mostrar usuarios",
                 "responses": {
                     "200": {
                         "description": "Mostrar todos os usuarios."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/register": {
+            "post": {
+                "summary": "Cadastrar usuarios",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nome de Usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email do Usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Senha do Usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password_confirmation",
+                        "in": "query",
+                        "description": "Confirmação da senha",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "List of user object",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {}
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuario Cadastrado co sucesso"
                     },
                     "default": {
                         "description": "Ha ocurrido un error."
