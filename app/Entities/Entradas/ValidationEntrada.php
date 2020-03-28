@@ -9,4 +9,6 @@ class ValidationEntrada
        	'trader' => 'required|in:call,put',
        	'data' => 'required|date',
     ];
+
+    
 }
