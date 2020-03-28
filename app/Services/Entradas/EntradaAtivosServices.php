@@ -7,7 +7,7 @@ use App\Entities\Entradas\ValidationEntrada;
 use App\Repositories\Entradas\EntradaAtivosRepositoryInterface;
 use App\Exceptions\CustomValidationException;
 
-class EntradaAtivoServices
+class EntradaAtivosServices
 {
 	private $repository;
 	 public function __construct(EntradaAtivosRepositoryInterface $repository)
