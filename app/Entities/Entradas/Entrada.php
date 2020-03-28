@@ -78,7 +78,7 @@ class Entrada extends Model
      *      @OA\Parameter(
      *     name="hora",
      *     required=true,
-     *     description="Hora da Entrada - 00:00",
+     *     description="Hora da Entrada - 00:00:00",
      *      in="query",
      *     @OA\Schema(
      *         type="string"

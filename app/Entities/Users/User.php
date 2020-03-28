@@ -9,10 +9,12 @@ use Laravel\Passport\HasApiTokens;
 
 //auto-bot-trader-back-end.herokuapp.com
 
+//localhost:8000
+
 /**
  * @OA\Info(title="API BotTrader", version="1.0")
  *
- * @OA\Server(url="http://localhost:8000/api")
+ * @OA\Server(url="https://auto-bot-trader-back-end.herokuapp.com/api")
  */
 
 class User extends Authenticatable
