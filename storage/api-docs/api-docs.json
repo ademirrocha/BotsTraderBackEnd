@@ -13,26 +13,6 @@
         "/api/users": {
             "get": {
                 "summary": "Mostrar usuarios",
-                "parameters": [
-                    {
-                        "name": "status",
-                        "in": "query",
-                        "description": "Status values that need to be considered for filter",
-                        "required": true,
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "string",
-                                "default": "available",
-                                "enum": [
-                                    "available",
-                                    "pending",
-                                    "sold"
-                                ]
-                            }
-                        }
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "Mostrar todos os usuarios."

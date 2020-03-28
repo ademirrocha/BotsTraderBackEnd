@@ -28,21 +28,7 @@ class User extends Authenticatable
      *     @OA\Response(
      *         response="default",
      *         description="Ha ocurrido un error."
-     *     ),
-     *     @OA\Parameter(
-     *         name="status",
-     *         in="query",
-     *         description="Status values that need to be considered for filter",
-     *         required=true,
-     *         @OA\Schema(
-     *         type="array",
-     *           @OA\Items(
-     *               type="string",
-     *               enum={"available", "pending", "sold"},
-     *               default="available"
-     *           ),
-     *       ),
-        )
+     *     )
      * )
      */
 
