@@ -5,9 +5,9 @@ namespace App\Entities\Entradas;
 use Illuminate\Database\Eloquent\Model;
 use App\Entities\Ativos\Ativo;
 
-//auto-bot-trader-back-end.herokuapp.com
+//https://auto-bot-trader-back-end.herokuapp.com/api
 
-//localhost:8000
+//http://localhost:8000/api
 
 /**
  * @OA\Info(title="API BotTrader", version="1.0")
