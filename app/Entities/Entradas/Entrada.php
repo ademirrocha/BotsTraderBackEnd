@@ -12,7 +12,10 @@ use App\Entities\Ativos\Ativo;
 /**
  * @OA\Info(title="API BotTrader", version="1.0")
  *
- * @OA\Server(url="https://auto-bot-trader-back-end.herokuapp.com/api")
+ * @OA\Server(
+ *		url="https://auto-bot-trader-back-end.herokuapp.com/api",
+ *		url="http://localhost:8000/api"
+ *		)
  */
 
 class Entrada extends Model
