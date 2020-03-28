@@ -5,6 +5,16 @@ namespace App\Entities\Entradas;
 use Illuminate\Database\Eloquent\Model;
 use App\Entities\Ativos\Ativo;
 
+//auto-bot-trader-back-end.herokuapp.com
+
+//localhost:8000
+
+/**
+ * @OA\Info(title="API BotTrader", version="1.0")
+ *
+ * @OA\Server(url="https://auto-bot-trader-back-end.herokuapp.com/api")
+ */
+
 class Entrada extends Model
 {
     protected $fillable = [
