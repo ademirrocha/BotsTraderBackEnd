@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Entradas;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Services\EntradaAtivoServices;
+use App\Services\Entradas\EntradaAtivosServices;
 
 class EntradaAtivoController extends Controller
 {
@@ -15,7 +15,7 @@ class EntradaAtivoController extends Controller
         return response()->json(['error' => $e]);
     }
 
-    public function __construct(EntradaAtivoServices $service)
+    public function __construct(EntradaAtivosServices $service)
     {
         $this->service = $service;
     }
