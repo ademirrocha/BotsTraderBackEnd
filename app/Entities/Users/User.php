@@ -7,9 +7,30 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
+/**
+ * @OA\Info(title="API Usuarios", version="1.0")
+ *
+ * @OA\Server(url="http://localhost:8000")
+ */
+
 class User extends Authenticatable
 {
     use Notifiable, HasApiTokens;
+
+    /**
+     * @OA\Get(
+     *     path="/api/users",
+     *     summary="Mostrar usuarios",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Mostrar todos los usuarios."
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *     )
+     * )
+     */
 
     /**
      * The attributes that are mass assignable.

@@ -101,6 +101,10 @@ class UserController extends Controller
         }
     }
 
+    private function error($e){
+        return response()->json(['error' => $e]);
+    }
+
 
 
 
