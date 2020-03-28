@@ -1,21 +1,41 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "API Usuarios",
+        "title": "API BotTrader",
         "version": "1.0"
     },
     "servers": [
         {
-            "url": "http://localhost:8000"
+            "url": "https://auto-bot-trader-back-end.herokuapp.com"
         }
     ],
     "paths": {
         "/api/users": {
             "get": {
                 "summary": "Mostrar usuarios",
+                "parameters": [
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status values that need to be considered for filter",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "default": "available",
+                                "enum": [
+                                    "available",
+                                    "pending",
+                                    "sold"
+                                ]
+                            }
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "Mostrar todos los usuarios."
+                        "description": "Mostrar todos os usuarios."
                     },
                     "default": {
                         "description": "Ha ocurrido un error."
