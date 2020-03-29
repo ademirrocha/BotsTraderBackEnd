@@ -12,13 +12,6 @@ Route::POST('login', 'Api\Auth\AuthController@login');
 Route::middleware('auth:api')->group(function () {
 
 
-  Route::group(['prefix' => 'ativos' ], function(){
-
-    Route::POST('/cadastro', 'AtivoController@store');
-    Route::get('/', 'AtivosController@index');
-  });
-
-
 
   Route::group(['namespace' => 'Api' ], function(){
 
@@ -46,6 +39,13 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/today', 'EntradaAtivoController@today');
     Route::POST('/cadastro', 'EntradaController@store');
 
+  });
+
+
+   Route::group(['namespace' => 'Ativo', 'prefix' => 'ativos' ], function(){
+
+    Route::POST('/cadastro', 'AtivoController@store');
+    Route::get('/', 'AtivoController@index');
   });
 
 
