@@ -45,6 +45,11 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\AtivoRepositoryInterface::class, 
             \App\Repositories\AtivoRepositoryEloquent::class
         );
+
+        $this->app->bind(
+            \App\Repositories\Dashboard\DashboardRepositoryInterface::class, 
+            \App\Repositories\Dashboard\DashboardRepositoryEloquent::class
+        );
         
     }
 }

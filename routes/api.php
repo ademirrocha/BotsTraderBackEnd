@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 Route::POST('register', 'Api\User\UserController@store');
 Route::POST('login', 'Api\Auth\AuthController@login');
 Route::get('/users', 'Api\User\UserController@index');
+Route::get('/dashboard/count', 'Api\Dashboard\DasboardController@count');
+
 
 
 Route::group(['prefix' => 'ativos' ], function(){

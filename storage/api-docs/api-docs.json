@@ -67,7 +67,7 @@
                     {
                         "name": "hora",
                         "in": "query",
-                        "description": "Hora da Entrada - 00:00",
+                        "description": "Hora da Entrada - 00:00:00",
                         "required": true,
                         "schema": {
                             "type": "string"
