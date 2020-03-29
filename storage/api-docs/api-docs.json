@@ -161,6 +161,19 @@
                     }
                 }
             }
+        },
+        "/dashboard/count": {
+            "get": {
+                "summary": "Conta a quantidade de usuarios e a qtd de ativos cadastrados, e a qtd de entradas para hoje",
+                "responses": {
+                    "200": {
+                        "description": "Mostrar todos os usuarios."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
         }
     }
 }

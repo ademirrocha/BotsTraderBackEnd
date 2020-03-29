@@ -22,7 +22,7 @@ class DashboardRepositoryEloquent implements DashboardRepositoryInterface
     public function count()
     {
         $users = $this->user->count();
-        $entradas = $this->entrada->count();
+        $entradas = $this->entrada->where('data', date('Y-m-d'))->count();
         $ativos = $this->ativo->count();
         return [
             'users' => $users,
