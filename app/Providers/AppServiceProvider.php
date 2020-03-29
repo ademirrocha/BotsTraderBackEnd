@@ -42,8 +42,8 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Entradas\EntradaAtivosRepositoryEloquent::class
         );
         $this->app->bind(
-            \App\Repositories\AtivoRepositoryInterface::class, 
-            \App\Repositories\AtivoRepositoryEloquent::class
+            \App\Repositories\Ativos\AtivoRepositoryInterface::class, 
+            \App\Repositories\Ativos\AtivoRepositoryEloquent::class
         );
 
         $this->app->bind(
