@@ -15,13 +15,26 @@ class User extends Authenticatable
      * @OA\Get(
      *     path="/users",
      *     summary="Mostrar usuarios",
+     *     security={{"bearerAuth":{}}}, 
+ *      @OA\Parameter(
+ *         name="Authorization",
+ *         in="header",
+ *         required=true,
+ *         description="Bearer {access-token}",
+ *         @OA\Schema(
+ *              type="bearerAuth"
+ *         ) 
+ *      ), 
+
      *     @OA\Response(
      *         response=200,
-     *         description="Mostrar todos os usuarios."
+     *         description="Mostrar todos os usuarios.",
+     *         @OA\JsonContent()
      *     ),
      *     @OA\Response(
      *         response="default",
-     *         description="Ha ocurrido un error."
+     *         description="Ha ocurrido un error.",
+     *         @OA\JsonContent()
      *     )
      * ),
      * 
@@ -65,6 +78,7 @@ class User extends Authenticatable
      *       required=true,
      *       @OA\MediaType(
      *           mediaType="multipart/form-data",
+                mediaType="application/jason"
      *     
      *       )
      *   ),
@@ -115,6 +129,55 @@ class User extends Authenticatable
      * ),
      * 
      */
+
+
+
+
+
+    /**
+     * @OA\Post(
+     *     path="/login",
+     *     summary="Authenticar usuario",
+     *       @OA\RequestBody(
+     *       description="Entra no sistema",
+     *       required=true,
+     *       @OA\MediaType(
+     *           mediaType="multipart/form-data",
+     *           mediaType="application/jason"
+     *       )
+     *   ),
+     *       
+     *    @OA\Parameter(
+     *     name="email",
+     *     required=true,
+     *     description="Email do Usuário",
+     *      in="query",
+     *     @OA\Schema(
+                format="email",
+     *         type="string"
+     *     )
+     *   ),
+     *      @OA\Parameter(
+     *     name="password",
+     *     required=true,
+     *     description="Senha do Usuário",
+     *      in="query",
+     *     @OA\Schema(
+     *         type="string"
+     *     )
+     *   ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Authenticado com sucesso"
+     *     ),
+     *     @OA\Response(
+     *         response="default",
+     *         description="Ha ocurrido un error."
+     *     )
+     * ),
+     * 
+     */
+
 
 
 }

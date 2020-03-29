@@ -94,14 +94,40 @@
         "/users": {
             "get": {
                 "summary": "Mostrar usuarios",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {access-token}",
+                        "required": true,
+                        "schema": {
+                            "type": "bearerAuth"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "Mostrar todos os usuarios."
+                        "description": "Mostrar todos os usuarios.",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     },
                     "default": {
-                        "description": "Ha ocurrido un error."
+                        "description": "Ha ocurrido un error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/register": {
@@ -149,12 +175,53 @@
                     "description": "List of user object",
                     "required": true,
                     "content": {
-                        "multipart/form-data": {}
+                        "application/jason": {}
                     }
                 },
                 "responses": {
                     "200": {
                         "description": "Usuario Cadastrado co sucesso"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "summary": "Authenticar usuario",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email do Usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "email"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Senha do Usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Entra no sistema",
+                    "required": true,
+                    "content": {
+                        "application/jason": {}
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Authenticado com sucesso"
                     },
                     "default": {
                         "description": "Ha ocurrido un error."
@@ -171,6 +238,24 @@
                     },
                     "default": {
                         "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "passport": {
+                "type": "oauth2",
+                "description": "Laravel passport oauth2 security.",
+                "in": "header",
+                "scheme": "https",
+                "flows": {
+                    "password": {
+                        "authorizationUrl": "http://localhost/oauth/authorize",
+                        "tokenUrl": "http://localhost/oauth/token",
+                        "refreshUrl": "http://localhost/token/refresh",
+                        "scopes": []
                     }
                 }
             }
