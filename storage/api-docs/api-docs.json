@@ -10,6 +10,19 @@
         }
     ],
     "paths": {
+        "/ativos": {
+            "get": {
+                "summary": "Mostrar tdos os Ativos cadastrados",
+                "responses": {
+                    "200": {
+                        "description": "Mostrar entradas ."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
         "/entradas/today": {
             "get": {
                 "summary": "Mostrar entradas com respectivos Ativos",
