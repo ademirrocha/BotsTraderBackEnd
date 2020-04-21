@@ -4,14 +4,14 @@ namespace App\Repositories;
 
 use App\Entities\Entradas\Entrada;
 use App\Entities\Users\User;
-use App\Repositories\TradeRepositoryEloquent;
+use App\Services\TraderServices;
 
 class EntradaRepositoryEloquent implements EntradaRepositoryInterface
 {
     private $model;
     private $trade;
 
-    public function __construct(Entrada $entradas, TradeRepositoryEloquent $trade)
+    public function __construct(Entrada $entradas, TraderServices $trade)
     {
         $this->model = $entradas;
         $this->trade = $trade;
