@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        
     ],
 
     /*

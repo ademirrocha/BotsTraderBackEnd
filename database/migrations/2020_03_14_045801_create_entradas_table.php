@@ -17,7 +17,7 @@ class CreateEntradasTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('ativo_id')->unsigned()->default(1);
             $table->enum('trader', ['call', 'put']);
-            $table->date('data');
+            $table->datetime('data');
             $table->timestamps();
 
             $table->foreign('ativo_id')->references('id')->on('ativos')->onDelete('cascade');

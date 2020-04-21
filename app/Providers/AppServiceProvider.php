@@ -15,6 +15,8 @@ class AppServiceProvider extends ServiceProvider
     {
 
         $this->app->register(RepositoryServiceProvider::class);
+        $this->app->register('\darkaonline\l5-swagger\src\L5SwaggerServiceProvider::class');
+
         
     }
 
