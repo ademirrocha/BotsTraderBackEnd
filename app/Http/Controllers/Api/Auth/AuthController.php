@@ -36,7 +36,7 @@ class AuthController extends Controller
     		]);
     	}else{
             return response()->json([
-                'error' => $auth
+                'Email ou senha incorretos'
             ]);
         }
     }
