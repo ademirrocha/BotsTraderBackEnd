@@ -25,6 +25,7 @@ class EntradaRepositoryEloquent implements EntradaRepositoryInterface
 
     public function store(array $data)
     {
+        $data['hora'] = $data['hora'] . ':00';
         $entrada = $this->model->create($data);
         
         return $entrada->with('ativos')->first();
