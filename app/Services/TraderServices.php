@@ -3,7 +3,7 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Validator;
 
-use App\Entities\Entradas\ValidationTrader;
+use App\Entities\Trades\ValidationTrader;
 use App\Repositories\TradeRepositoryInterface;
 use App\Exceptions\CustomValidationException;
 
