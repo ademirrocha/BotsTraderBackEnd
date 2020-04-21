@@ -34,4 +34,16 @@ class AuthController extends Controller
     	}
     }
 
+    /**
+     * Deauthorize User
+     *
+     * @param Request $request
+     */
+    public function logout(Request $request)
+    {
+        $request->user()->token()->revoke();
+
+        return $this->response->json(['data' => ['message' => 'Usuário desconectado com sucesso']]);
+    }
+
 }

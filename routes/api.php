@@ -18,7 +18,7 @@ Route::middleware('auth:api')->group(function () {
 
     Route::get('/dashboard/count', 'Dashboard\DashboardController@count');
 
-
+    Route::POST('logout', 'Auth\AuthController@logout');
 
    Route::group(['namespace' => 'User', 'prefix' => 'user' ], function(){
 
