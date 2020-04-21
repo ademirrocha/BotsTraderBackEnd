@@ -20,7 +20,7 @@ class EntradaRepositoryEloquent implements EntradaRepositoryInterface
 
     public function get($id)
     {
-        return $this->model->find($id)->with('ativos')->first();
+        return $this->model->where('id', $id)->with('ativos')->first();
     }
 
     public function store(array $data)
