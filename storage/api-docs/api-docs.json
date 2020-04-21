@@ -1,24 +1,274 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "API Usuarios",
+        "title": "API BotTrader",
         "version": "1.0"
     },
     "servers": [
         {
-            "url": "http://localhost:8000"
+            "url": "http://localhost:8000/api"
         }
     ],
     "paths": {
-        "/api/users": {
+        "/ativos": {
             "get": {
-                "summary": "Mostrar usuarios",
+                "summary": "Mostrar tdos os Ativos cadastrados",
                 "responses": {
                     "200": {
-                        "description": "Mostrar todos los usuarios."
+                        "description": "Mostrar entradas ."
                     },
                     "default": {
                         "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/entradas/today": {
+            "get": {
+                "summary": "Mostrar entradas com respectivos Ativos",
+                "responses": {
+                    "200": {
+                        "description": "Mostrar entradas ."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/entradas/cadastro": {
+            "post": {
+                "summary": "Cadastrar entradas",
+                "operationId": "App\\Entities\\Entradas\\Entrada::ativos",
+                "parameters": [
+                    {
+                        "name": "ativo_id",
+                        "in": "query",
+                        "description": "Id do Ativo cadastrado no banco",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "trader",
+                        "in": "query",
+                        "description": "Tipo de Trader",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "default": "call",
+                                "enum": [
+                                    "call",
+                                    "put"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "data",
+                        "in": "query",
+                        "description": "Data da entrada - 0000-00-00",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date"
+                        }
+                    },
+                    {
+                        "name": "hora",
+                        "in": "query",
+                        "description": "Hora da Entrada - 00:00:00",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "List of user object",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {}
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Entrada Cadastrado com sucesso"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "summary": "Mostrar usuarios",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer {access-token}",
+                        "required": true,
+                        "schema": {
+                            "type": "bearerAuth"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Mostrar todos os usuarios.",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/register": {
+            "post": {
+                "summary": "Cadastrar usuarios",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Nome de Usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email do Usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Senha do Usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password_confirmation",
+                        "in": "query",
+                        "description": "Confirmação da senha",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "List of user object",
+                    "required": true,
+                    "content": {
+                        "application/jason": {}
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuario Cadastrado co sucesso"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "summary": "Authenticar usuario",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email do Usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "email"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "Senha do Usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Entra no sistema",
+                    "required": true,
+                    "content": {
+                        "application/jason": {}
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Authenticado com sucesso"
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/dashboard/count": {
+            "get": {
+                "summary": "Conta a quantidade de usuarios e a qtd de ativos cadastrados, e a qtd de entradas para hoje",
+                "responses": {
+                    "200": {
+                        "description": "Mostrar todos os usuarios."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "passport": {
+                "type": "oauth2",
+                "description": "Laravel passport oauth2 security.",
+                "in": "header",
+                "scheme": "https",
+                "flows": {
+                    "password": {
+                        "authorizationUrl": "http://localhost/oauth/authorize",
+                        "tokenUrl": "http://localhost/oauth/token",
+                        "refreshUrl": "http://localhost/token/refresh",
+                        "scopes": []
                     }
                 }
             }

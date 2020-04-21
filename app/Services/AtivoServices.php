@@ -4,7 +4,7 @@ namespace App\Services;
 use Illuminate\Support\Facades\Validator;
 
 use App\Entities\Ativos\ValidationAtivo;
-use App\Repositories\AtivoRepositoryInterface;
+use App\Repositories\Ativos\AtivoRepositoryInterface;
 use App\Exceptions\CustomValidationException;
 
 class AtivoServices
