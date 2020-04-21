@@ -3,10 +3,11 @@
 namespace App\Repositories;
 
 use App\Entities\Entradas\Entrada;
+use App\Services\TraderServices;
 
 interface EntradaRepositoryInterface
 {
-	public function __construct(Entrada $entradas);
+	public function __construct(Entrada $entradas, TraderServices $trade);
    public function index();
 	
 	public function get($id);
