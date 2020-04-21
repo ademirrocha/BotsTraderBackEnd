@@ -8,7 +8,7 @@ class ValidationEntrada
        	'ativo_id' => 'required|int',
        	'trader' => 'required|in:call,put',
        	'data' => 'required|date',
-       	'hora' => 'required|time',
+       	'hora' => 'required',
     ];
 
     
