@@ -27,7 +27,7 @@ class EntradaRepositoryEloquent implements EntradaRepositoryInterface
     {
         $entrada = $this->model->create($data);
         
-        return $entrada->with('ativos');
+        return $entrada->with('ativos')->get();
     }
 
     public function update($id, array $data)
