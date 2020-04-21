@@ -20,15 +20,14 @@ class EntradaRepositoryEloquent implements EntradaRepositoryInterface
 
     public function get($id)
     {
-        return $this->model->find($id);
+        return $this->model->find($id)->with('ativos')->first();
     }
 
     public function store(array $data)
     {
-        $data['hora'] = $data['hora'] . ':00';
         $entrada = $this->model->create($data);
         
-        return $entrada->with('ativos')->first();
+        return $this->get($entrada->id);
     }
 
     public function update($id, array $data)
