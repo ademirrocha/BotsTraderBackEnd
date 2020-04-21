@@ -20,7 +20,6 @@ class CreateTradesTable extends Migration
             $table->float('preco_compra')->nullable();
             $table->float('preco_venda')->nullable();
             $table->float('valor');
-            $table->integer('time');
             $table->integer('martigale')->default(2);
             $table->boolean('status')->default(0);
             $table->timestamps();

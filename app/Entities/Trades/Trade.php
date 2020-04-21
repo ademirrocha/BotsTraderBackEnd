@@ -12,7 +12,6 @@ class Trade extends Model
         'preco_compra',
         'preco_venda',
         'valor',
-        'time',
         'martigale',
         'status'
     ];

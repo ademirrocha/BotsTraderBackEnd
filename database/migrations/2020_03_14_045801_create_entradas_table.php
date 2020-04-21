@@ -17,6 +17,7 @@ class CreateEntradasTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('ativo_id')->unsigned()->default(1);
             $table->enum('trader', ['call', 'put']);
+            $table->integer('time')->default(1);
             $table->date('data');
             $table->time('hora');
             $table->timestamps();

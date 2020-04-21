@@ -22,7 +22,8 @@ class Entrada extends Model
 {
     protected $fillable = [
         'ativo_id', 
-        'trader', 
+        'trader',
+        'time',
         'data', 
         'hora'
     ];
