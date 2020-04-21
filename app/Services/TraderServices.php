@@ -4,13 +4,13 @@ namespace App\Services;
 use Illuminate\Support\Facades\Validator;
 
 use App\Entities\Entradas\ValidationTrader;
-use App\Repositories\TraderRepositoryInterface;
+use App\Repositories\TradeRepositoryInterface;
 use App\Exceptions\CustomValidationException;
 
 class TraderServices
 {
 	private $repository;
-	 public function __construct(TraderRepositoryInterface $repository)
+	 public function __construct(TradeRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }
