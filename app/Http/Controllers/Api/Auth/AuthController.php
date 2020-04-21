@@ -22,7 +22,9 @@ class AuthController extends Controller
     		'password' => 'required'
     	]);
 
-    	if(Auth::attempt(['email'=>$request->email, 'password'=>$request->password])){
+        $auth = Auth::attempt(['email'=>$request->email, 'password'=>$request->password]);
+
+    	if($auth){
     		$user = Auth::user();
 
 
@@ -32,7 +34,11 @@ class AuthController extends Controller
     			'token' => $token->accessToken,
                 $user
     		]);
-    	}
+    	}else{
+            return response()->json([
+                'error' => $auth
+            ]);
+        }
     }
 
     /**
