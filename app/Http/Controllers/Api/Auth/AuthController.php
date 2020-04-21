@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Entities\Users\User;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
 class AuthController extends Controller
 {
@@ -41,9 +42,9 @@ class AuthController extends Controller
      */
     public function logout(Request $request)
     {
-        $request->user()->token()->revoke();
+        auth()->user()->token()->revoke();
 
-        return $this->response->json(['data' => ['message' => 'Usuário desconectado com sucesso']]);
+        return response()->json(['data' => ['message' => 'Usuário desconectado com sucesso']]);
     }
 
 }
