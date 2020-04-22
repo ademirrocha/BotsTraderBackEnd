@@ -72,4 +72,13 @@ class Trader extends Controller
             return $this->error($e->getMessage());
         }
     }
+
+    public function today() {
+
+        try {
+            return response()->json($this->service->today(), Response::HTTP_OK);
+        } catch (Exception $e) {
+            return $this->error($e->getMessage());
+        }
+    }
 }

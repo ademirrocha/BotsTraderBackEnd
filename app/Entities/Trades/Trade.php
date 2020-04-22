@@ -3,6 +3,7 @@
 namespace App\Entities\Trades;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Entities\Entradas\Entrada;
 
 class Trade extends Model
 {
@@ -15,4 +16,8 @@ class Trade extends Model
         'martigale',
         'status'
     ];
+
+    public function entradas(){
+    	return $this->belongsTo(Entrada::class, 'entrada_id');
+    }
 }

@@ -54,7 +54,7 @@ Route::middleware('auth:api')->group(function () {
 
     Route::POST('/cadastro', 'TraderController@store');
     Route::get('/', 'TraderController@index');
-
+    Route::get('/today', 'TraderController@today');
   });
 
  });

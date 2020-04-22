@@ -21,7 +21,7 @@ class CreateTradesTable extends Migration
             $table->float('preco_venda')->nullable();
             $table->float('valor');
             $table->integer('martigale')->default(2);
-            $table->boolean('status')->default(0);
+            $table->boolean('status')->default(1);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
