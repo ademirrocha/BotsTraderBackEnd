@@ -21,7 +21,7 @@ class EntradaResource extends JsonResource
 
         return [
             'id' => $this->id,
-            'ativos' => AtivoResource::collection($this->ativos()),
+            'ativos' => new AtivoResource($this->ativos()),
             'trader' => $this->trader,
             'time' => $this->time,
             'data' => $this->data,

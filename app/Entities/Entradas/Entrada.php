@@ -4,7 +4,7 @@ namespace App\Entities\Entradas;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Entities\Ativos\Ativo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 //https://auto-bot-trader-back-end.herokuapp.com/api
 
@@ -112,8 +112,8 @@ class Entrada extends Model
      */
 
 
-    public function ativos(): HasMany
+    public function ativos(): HasOne
     {
-    	return $this->hasMany(Ativo::class);
+    	return $this->hasOne(Ativo::class);
     }
 }
