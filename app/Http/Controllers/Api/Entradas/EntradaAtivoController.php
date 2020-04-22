@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\Entradas\EntradaAtivosServices;
 use Symfony\Component\HttpFoundation\Response;
+use App\Http\Resources\Entradas\EntradaResource;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class EntradaAtivoController extends Controller
 {
@@ -30,10 +32,13 @@ class EntradaAtivoController extends Controller
         }
     }
 
-    public function today() {
+    public function today(): AnonymousResourceCollection 
+    {
 
         try {
-            return response()->json($this->service->today(), Response::HTTP_OK);
+            $entradas = $this->service->today();
+            return EntradaResource::collection($entradas);
+
         } catch (Exception $e) {
             return $this->error($e->getMessage());
         }
