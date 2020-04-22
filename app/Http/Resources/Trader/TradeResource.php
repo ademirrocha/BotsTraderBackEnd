@@ -21,7 +21,7 @@ class TradeResource extends JsonResource
 
         return [
             'id' => $this->id,
-            'entrada' => EntradaResource::collection($this->entradas()),
+            'entrada' => new EntradaResource($this->entradas()),
             'preco_compra' => $this->preco_compra,
             'preco_venda' => $this->preco_venda,
             'valor' => $this->valor,
