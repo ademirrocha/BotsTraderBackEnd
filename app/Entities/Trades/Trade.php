@@ -17,7 +17,11 @@ class Trade extends Model
         'status'
     ];
 
-    public function entradas(){
-    	return $this->belongsTo(Entrada::class);
+    public function entrada(){
+    	return $this->belongsTo(Entrada::class, 'entrada_id');
     }
+
+    
+
+
 }

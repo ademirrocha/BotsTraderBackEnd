@@ -48,8 +48,23 @@ class TraderServices
         return $this->repository->update($id, $data);
     }
 
+    public function updateStatus(array $data)
+    {
+        $validator = Validator::make($data, ValidationTrader::RULE_UPDATE_TRADER);
+
+        if ($validator->fails()) {
+            throw new CustomValidationException('Falha na validação dos dados', $validator->errors(), 404);
+        }
+        
+        return $this->repository->updateStatus($data);
+    }
+
     public function destroy($id)
     {
         return $this->repository->destroy($id);
+    }
+
+    public function today() {
+        return $this->repository->today();
     }
 }

@@ -17,7 +17,7 @@ class CreateAtivosTable extends Migration
 	{
 		Schema::create('ativos', function(Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('nome');
             $table->timestamps();
             $table->softDeletes();
 		});

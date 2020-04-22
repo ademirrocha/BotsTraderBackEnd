@@ -20,7 +20,7 @@ class EntradaAtivosRepositoryEloquent implements EntradaAtivosRepositoryInterfac
 
     public function today()
     {
-        return $this->model->with('ativos')->where('data', date('Y-m-d'))->get();
+        return $this->model->where('data', date('Y-m-d'))->with('ativos')->get();
     }
 
     

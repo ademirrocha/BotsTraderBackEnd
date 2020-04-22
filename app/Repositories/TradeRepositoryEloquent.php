@@ -33,8 +33,34 @@ class TradeRepositoryEloquent implements TradeRepositoryInterface
         return $this->model->find($id)->update($data);
     }
 
+    public function updateStatus(array $data)
+    {
+        $trade = $this->model->find($data['trade_id']);
+        if($trade->status == 1){
+            $trade->status = 0;
+            $trade->type_status = $data['type_status'];
+        }else{
+            $trade->status = 1;
+            $trade->type_status = 'À Executar';
+        }
+        
+        $trade->save();
+        return $trade;
+    }
+
     public function destroy($id)
     {
         return $this->model->find($id)->delete();
     }
+
+    public function today()
+    {
+
+        $trades = $this->model->whereHas('entrada',  function ($query) {
+            $query->where('data', date('Y-m-d'))->where('user_id', auth()->user()->id);
+        });
+
+        return $trades->get();
+    }
+
 }

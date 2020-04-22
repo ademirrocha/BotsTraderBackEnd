@@ -1,19 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\API\Trader;
+namespace App\Http\Controllers\Api\Trader;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\TraderServices;
 use Symfony\Component\HttpFoundation\Response;
+use App\Http\Resources\Trader\TraderResource;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
-class Trader extends Controller
+class TraderController extends Controller
 {
     private $service;
 
     public function __construct(TraderServices $service)
     {
         $this->service = $service;
+    }
+
+    protected function error($e){
+        return response()->json(['error' => $e]);
     }
 
 
@@ -61,6 +67,19 @@ class Trader extends Controller
         }
     }
 
+    public function updateStatus(Request $request)
+    {
+        try {
+            $this->service->updateStatus($request->all());
+            return $this->today();
+
+        } catch (CustomValidationException $e) {
+            return $this->error($e->getMessage(), $e->getDetails());
+        } catch (\Exception $e) {
+            return $this->error($e->getMessage());
+        }
+    }
+
     public function destroy($id)
     {
         try {
@@ -76,7 +95,9 @@ class Trader extends Controller
     public function today() {
 
         try {
-            return response()->json($this->service->today(), Response::HTTP_OK);
+            $trades = $this->service->today();
+            return TraderResource::collection($trades);
+
         } catch (Exception $e) {
             return $this->error($e->getMessage());
         }

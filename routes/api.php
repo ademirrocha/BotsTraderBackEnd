@@ -53,6 +53,7 @@ Route::middleware('auth:api')->group(function () {
    Route::group(['namespace' => 'Trader', 'prefix' => 'trades' ], function(){
 
     Route::POST('/cadastro', 'TraderController@store');
+    Route::put('/update/status', 'TraderController@updateStatus');
     Route::get('/', 'TraderController@index');
     Route::get('/today', 'TraderController@today');
   });

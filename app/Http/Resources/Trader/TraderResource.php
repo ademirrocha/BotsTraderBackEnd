@@ -4,10 +4,9 @@ namespace App\Http\Resources\Trader;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use App\Http\Resources\Entradas\EntradaResource;
 
-class TradeResource extends JsonResource
+class TraderResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,17 +16,16 @@ class TradeResource extends JsonResource
      */
     public function toArray($request)
     {
-        //return parent::toArray($request);
-
+        
         return [
             'id' => $this->id,
-            'entrada' => EntradaResource::collection($this->entradas()),
+            'entrada' => new EntradaResource($this->entrada),
             'preco_compra' => $this->preco_compra,
             'preco_venda' => $this->preco_venda,
             'valor' => $this->valor,
             'martigale' => $this->martigale,
             'status' => $this->status
-
+        
         ];
     }
 }

@@ -32,12 +32,15 @@ class EntradaAtivoController extends Controller
         }
     }
 
-    public function today(): AnonymousResourceCollection 
+    public function today()
     {
 
         try {
             $entradas = $this->service->today();
-            return EntradaResource::collection($entradas);
+            if($entradas->count() > 0)
+                return response()->json($entradas);
+            else
+                return response()->json(['Nenhuma entrada para hoje']);
 
         } catch (Exception $e) {
             return $this->error($e->getMessage());

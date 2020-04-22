@@ -4,7 +4,7 @@ namespace App\Entities\Entradas;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Entities\Ativos\Ativo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 //https://auto-bot-trader-back-end.herokuapp.com/api
 
@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Entrada extends Model
 {
     protected $fillable = [
+        'id', 
         'ativo_id', 
         'trader',
         'time',
@@ -112,8 +113,8 @@ class Entrada extends Model
      */
 
 
-    public function ativos(): HasOne
-    {
-    	return $this->hasOne(Ativo::class);
+    
+    public function ativos(){
+        return $this->belongsTo(Ativo::class, 'ativo_id');
     }
 }
