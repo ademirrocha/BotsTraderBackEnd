@@ -24,6 +24,7 @@ class TraderResource extends JsonResource
             'preco_venda' => $this->preco_venda,
             'valor' => $this->valor,
             'martigale' => $this->martigale,
+            'type_status' => $this->type_status,
             'status' => $this->status
         
         ];
