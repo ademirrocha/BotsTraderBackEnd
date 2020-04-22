@@ -18,6 +18,6 @@ class Trade extends Model
     ];
 
     public function entradas(){
-    	return $this->hasOne(Entrada::class);
+    	return $this->belongsTo(Entrada::class);
     }
 }

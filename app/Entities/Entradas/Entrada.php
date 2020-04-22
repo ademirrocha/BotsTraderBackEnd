@@ -112,6 +112,6 @@ class Entrada extends Model
 
 
     public function ativos(){
-    	return $this->hasOne(Ativo::class);
+    	return $this->belongsTo(Ativo::class);
     }
 }
