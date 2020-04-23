@@ -57,10 +57,10 @@ class TradeRepositoryEloquent implements TradeRepositoryInterface
     {
 
         $trades = $this->model->whereHas('entrada',  function ($query) {
-            $query->where('data', date('Y-m-d'))->where('user_id', auth()->user()->id)->orderBy('hora', 'ASC');
+            $query->where('data', date('Y-m-d'))->where('user_id', auth()->user()->id);
         });
 
-        return $trades->get();
+        return $trades->orderBy('hora', 'ASC')->get();
     }
 
 }
