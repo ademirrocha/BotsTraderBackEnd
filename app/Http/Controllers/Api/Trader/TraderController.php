@@ -92,12 +92,64 @@ class TraderController extends Controller
         }
     }
 
+    public function unique_multidim_array($array, $key) {
+        $temp_array = array();
+        $i = 0;
+        $key_array = array();
+       
+        foreach($array as $val) {
+            if (!in_array($val[$key], $key_array)) {
+                $key_array[$i] = $val[$key];
+                $temp_array[$i] = $val;
+            }
+            $i++;
+        }
+        return $temp_array;
+    }
+
+    public function setHora($trades){
+        foreach ($trades as $key => $trade) {
+            $hora = $trade->entrada->data.' '.$trade->entrada->hora;
+            $trade['datetime'] =  $hora;
+            $trades[$key] = $trade;
+        }
+
+        return $trades;
+    }
+
+    // Comparison function 
+    public function date_compare($element1, $element2) { 
+        $datetime1 = strtotime($element1['datetime']); 
+        $datetime2 = strtotime($element2['datetime']); 
+        return $datetime1 > $datetime2; 
+    }  
+      
+
+    public function order($array, $order){
+        foreach ($array as $key => $value) {
+            for ($i=$key+1; $i < count($array); $i++) { 
+                if($this->date_compare($value, $array[$i])){
+                    
+                    $array[$key] = $array[$i];
+                    $array[$i] = $value;
+                    
+                }
+            }
+            
+        }
+        return $array;
+    }
+
     public function today() {
 
         try {
             $trades = $this->service->today();
-            return TraderResource::collection($trades);
+            $trades = $this->setHora($trades);
 
+            // Sort the array  
+            $trades = $this->order($trades, 'DESC');
+            return TraderResource::collection($trades);
+            
         } catch (Exception $e) {
             return $this->error($e->getMessage());
         }
