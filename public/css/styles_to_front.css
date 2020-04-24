@@ -1,8 +1,0 @@
-.ico-link{
-	cursor: pointer !important;
-	transition: 1s;
-
-}
-.ico-link:hover{
-	transform: scale(1.5);
-}

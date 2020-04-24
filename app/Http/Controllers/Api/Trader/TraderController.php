@@ -97,7 +97,7 @@ class TraderController extends Controller
     public function date_compare($element1, $element2) { 
         $datetime1 = strtotime($element1->entrada['data'].' '.$element1->entrada['hora']); 
         $datetime2 = strtotime($element2->entrada['data'].' '.$element2->entrada['hora']); 
-        return $datetime1 > $datetime2; 
+        return $datetime1 >= $datetime2; 
     }  
       
 
