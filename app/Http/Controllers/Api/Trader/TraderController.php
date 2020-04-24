@@ -92,6 +92,21 @@ class TraderController extends Controller
         }
     }
 
+    public function unique_multidim_array($array, $key) {
+        $temp_array = array();
+        $i = 0;
+        $key_array = array();
+       
+        foreach($array as $val) {
+            if (!in_array($val[$key], $key_array)) {
+                $key_array[$i] = $val[$key];
+                $temp_array[$i] = $val;
+            }
+            $i++;
+        }
+        return $temp_array;
+    }
+
 
     // Comparison function 
     public function date_compare($element1, $element2) { 
@@ -122,6 +137,7 @@ class TraderController extends Controller
             $trades = $this->service->today();
             // Sort the array  
             $trades = $this->order($trades, 'DESC');
+             $trades = $this->unique_multidim_array($trades, 'id');
             return TraderResource::collection($trades);
             
         } catch (Exception $e) {
