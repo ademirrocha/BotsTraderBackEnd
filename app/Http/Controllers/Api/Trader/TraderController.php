@@ -137,7 +137,7 @@ class TraderController extends Controller
             $trades = $this->service->today();
             // Sort the array  
             $trades = $this->order($trades, 'DESC');
-            $trades = $this->unique_multidim_array($trades, 'created_at');
+            $trades = $this->unique_multidim_array($trades, 'id');
             return TraderResource::collection($trades);
             
         } catch (Exception $e) {
