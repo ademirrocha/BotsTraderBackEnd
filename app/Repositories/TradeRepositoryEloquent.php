@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Repositories;
+use Illuminate\Support\Facades\Hash;
 
 use App\Entities\Trades\Trade;
 
@@ -26,7 +27,7 @@ class TradeRepositoryEloquent implements TradeRepositoryInterface
     public function store(array $data)
     {
         $data['token'] = Hash::make(date('m-d-Y H:i:s').substr(fmod(microtime(true), 1), 1));
-        
+
         return $this->model->create($data);
     }
 
