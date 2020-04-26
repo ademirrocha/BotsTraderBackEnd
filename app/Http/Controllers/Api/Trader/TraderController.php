@@ -117,7 +117,7 @@ class TraderController extends Controller
     }  
       
 
-    public function order($array, $order){
+    public function orderDataAsc($array){
         
         for ($j = 0; $j < count($array)-1; $j++) {
             for ($i=$j+1; $i < count($array); $i++) { 
@@ -133,13 +133,32 @@ class TraderController extends Controller
         return $array;
     }
 
+    public function orderStatusTrue($array){
+        for ($j = 0; $j < count($array)-1; $j++) {
+            if($array[$j]->status == 0){
+                for($i=$j+1; $i < count($array); $i++){
+                    if($array[$i]->status == 1){
+                        $t = $array[$j];
+                        $array[$j] = $array[$i];
+                        $array[$i] = $t;
+                        $i = count($array);
+                    }
+                }
+            }
+            
+        }
+            
+        return $array;
+    }
+
     public function today() {
 
         try {
             $trades = $this->service->today();
 
             // Sort the array  
-            $trades = $this->order($trades, 'DESC');
+            $trades = $this->orderDataAsc($trades);
+            $trades = $this->orderStatusTrue($trades);
             //$trades = $this->unique_multidim_array($trades, 'token');
             return TraderResource::collection($trades);
             
