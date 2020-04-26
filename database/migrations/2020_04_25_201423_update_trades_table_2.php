@@ -15,7 +15,7 @@ class UpdateTradesTable2 extends Migration
     public function up()
     {
         Schema::table('trades', function (Blueprint $table) {
-            $table->string('token')->default(Hash::make(date('m-d-Y H:i:s').substr(fmod(microtime(true), 1), 1)));
+            $table->string('token')->default(Hash::make(date('m-d-Y H:i:s')));
         });
     }
 
