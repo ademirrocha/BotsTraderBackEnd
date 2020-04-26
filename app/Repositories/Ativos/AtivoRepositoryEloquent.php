@@ -15,7 +15,7 @@ class AtivoRepositoryEloquent implements AtivoRepositoryInterface
 
     public function index()
     {
-        return $this->model->all();
+        return $this->model->orderBy('nome', 'ASC')->get();
     }
 
     public function get($id)
@@ -25,6 +25,9 @@ class AtivoRepositoryEloquent implements AtivoRepositoryInterface
 
     public function store(array $data)
     {
+        if($this->model->where('nome', $data['nome'])->exists()){
+            return $this->model->where('nome', $data['nome'])->first();
+        }
         return $this->model->create($data);
     }
 
