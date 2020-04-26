@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Entities\Entradas\Entrada;
 use App\Entities\Users\User;
 use App\Services\TraderServices;
+use Illuminate\Support\Facades\Hash;
 
 class EntradaRepositoryEloquent implements EntradaRepositoryInterface
 {
