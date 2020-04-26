@@ -36,7 +36,7 @@ class EntradaRepositoryEloquent implements EntradaRepositoryInterface
                 'user_id' => $user->id,
                 'entrada_id' => $entrada->id,
                 'valor' => 2.0,
-
+                'token' => Hash::make(date('m-d-Y H:i:s').substr(fmod(microtime(true), 1), 1))
             ]);
         }
         return $this->get($entrada->id);

@@ -26,8 +26,6 @@ class TradeRepositoryEloquent implements TradeRepositoryInterface
 
     public function store(array $data)
     {
-        $data['token'] = date('m-d-Y H:i:s');
-
         return $this->model->create($data);
     }
 
