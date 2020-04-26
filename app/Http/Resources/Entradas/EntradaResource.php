@@ -20,11 +20,11 @@ class EntradaResource extends JsonResource
 
         return [
             'id' => $this->id,
-            'ativos' => new AtivoResource($this->ativos),
             'trader' => $this->trader,
             'time' => $this->time,
             'data' => $this->data,
-            'hora' => $this->hora
+            'hora' => $this->hora,
+            'ativos' => new AtivoResource($this->ativos)
 
         ];
     }

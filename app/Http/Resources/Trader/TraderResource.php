@@ -19,13 +19,14 @@ class TraderResource extends JsonResource
         
         return [
             'id' => $this->id,
-            'entrada' => new EntradaResource($this->entrada),
             'preco_compra' => $this->preco_compra,
             'preco_venda' => $this->preco_venda,
             'valor' => $this->valor,
             'martigale' => $this->martigale,
             'type_status' => $this->type_status,
-            'status' => $this->status
+            'status' => $this->status,
+            'token' => $this->token,
+            'entrada' => new EntradaResource($this->entrada)
         
         ];
     }

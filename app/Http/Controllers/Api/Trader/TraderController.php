@@ -97,11 +97,14 @@ class TraderController extends Controller
         $key_array = array();
        
         foreach($array as $val) {
-            if (!in_array($val[$key], $key_array)) {
+
+            if (! in_array($val[$key], $key_array)) {
                 array_push($key_array, $val[$key]);
                 array_push($temp_array, $val);
             }
         }
+
+        dd($temp_array);
         return $temp_array;
     }
 
@@ -133,9 +136,10 @@ class TraderController extends Controller
 
         try {
             $trades = $this->service->today();
+
             // Sort the array  
             $trades = $this->order($trades, 'DESC');
-            $trades = $this->unique_multidim_array($trades, 'token');
+            //$trades = $this->unique_multidim_array($trades, 'token');
             return TraderResource::collection($trades);
             
         } catch (Exception $e) {
