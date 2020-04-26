@@ -61,6 +61,7 @@ class TradeRepositoryEloquent implements TradeRepositoryInterface
             $query->where('data', date('Y-m-d'))->where('user_id', auth()->user()->id);
         })->get();
 
+
         foreach ($trades as $key => $trade) {
             if($trade->entrada->hora < date('H:i:s') && $trade->status){
                $trades[$key] = $this->updateStatus([

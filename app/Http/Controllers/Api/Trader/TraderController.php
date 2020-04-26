@@ -113,17 +113,18 @@ class TraderController extends Controller
     public function date_compare($element1, $element2) { 
         $datetime1 = strtotime($element1->entrada['data'].' '.$element1->entrada['hora']); 
         $datetime2 = strtotime($element2->entrada['data'].' '.$element2->entrada['hora']); 
-        return $datetime1 >= $datetime2; 
+        return $datetime1 > $datetime2; 
     }  
       
 
     public function order($array, $order){
-        foreach ($array as $key => $value) {
-            for ($i=$key+1; $i < count($array); $i++) { 
-                if($this->date_compare($value, $array[$i])){
-                    
-                    $array[$key] = $array[$i];
-                    $array[$i] = $value;
+        
+        for ($j = 0; $j < count($array)-1; $j++) {
+            for ($i=$j+1; $i < count($array); $i++) { 
+                if($this->date_compare($array[$j], $array[$i])){
+                    $t = $array[$j];
+                    $array[$j] = $array[$i];
+                    $array[$i] = $t;
                     
                 }
             }
