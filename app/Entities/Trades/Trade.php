@@ -14,7 +14,8 @@ class Trade extends Model
         'preco_venda',
         'valor',
         'martigale',
-        'status'
+        'status',
+        'token'
     ];
 
     public function entrada(){
