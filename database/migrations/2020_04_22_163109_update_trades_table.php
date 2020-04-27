@@ -18,7 +18,8 @@ class UpdateTradesTable extends Migration
                 'À Executar',
                 'Não Executado',
                 'Cancelado',
-                'Cancelado Pelo Usuário'
+                'Cancelado Pelo Usuário',
+                'Executado'
             ])->default('À Executar');
         });
     }
