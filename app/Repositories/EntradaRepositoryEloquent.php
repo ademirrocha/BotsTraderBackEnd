@@ -30,6 +30,14 @@ class EntradaRepositoryEloquent implements EntradaRepositoryInterface
 
     public function store(array $data)
     {
+        
+        if($this->model->where('ativo_id', $data['ativo_id'])
+            ->where('time', $data['time'])->where('trader', $data['trader'])
+            ->where('data', $data['data'])->where('hora', $data['hora'])->exists()){
+            return $this->model->where('ativo_id', $data['ativo_id'])->where('time', $data['time'])->where('trader', $data['trader'])
+            ->where('data', $data['data'])->where('hora', $data['hora'])->first();
+        }
+
         $entrada = $this->model->create($data);
         $users = User::all();
         foreach ($users as $user) {
