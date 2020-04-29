@@ -15,6 +15,7 @@ class Trade extends Model
         'preco_venda',
         'valor',
         'martigale',
+        'type_status',
         'status',
         'token'
     ];
