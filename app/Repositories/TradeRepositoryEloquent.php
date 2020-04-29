@@ -46,6 +46,8 @@ class TradeRepositoryEloquent implements TradeRepositoryInterface
         }
 
         $trade->hora_compra = $data['hora_compra'] ?? $trade->hora_compra;
+        $trade->preco_compra = $data['preco_compra'] ?? $trade->preco_compra;
+        $trade->preco_venda = $data['preco_venda'] ?? $trade->preco_venda;
         
         $trade->save();
         return $trade;
