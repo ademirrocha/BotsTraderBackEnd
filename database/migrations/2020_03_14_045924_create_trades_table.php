@@ -18,9 +18,9 @@ class CreateTradesTable extends Migration
             $table->bigInteger('user_id')->unsigned()->default(1);
             $table->bigInteger('entrada_id')->unsigned()->default(1);
             $table->time('hora_compra')->nullable();
-            $table->float('preco_compra')->nullable();
-            $table->float('preco_venda')->nullable();
-            $table->float('valor');
+            $table->float('preco_compra', 8,2)->nullable();
+            $table->float('preco_venda', 8,8)->nullable();
+            $table->float('valor', 8,2)->default(2);
             $table->integer('martigale')->default(2);
             $table->boolean('status')->default(1);
             $table->timestamps();

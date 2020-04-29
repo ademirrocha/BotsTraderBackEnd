@@ -44,7 +44,7 @@ class EntradaRepositoryEloquent implements EntradaRepositoryInterface
             $this->trade->store([
                 'user_id' => $user->id,
                 'entrada_id' => $entrada->id,
-                'valor' => 2.0,
+                'valor' => 2,
                 'token' => Hash::make(date('m-d-Y H:i:s').substr(fmod(microtime(true), 1), 1))
             ]);
         }

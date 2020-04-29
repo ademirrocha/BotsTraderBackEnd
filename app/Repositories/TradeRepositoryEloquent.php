@@ -50,6 +50,7 @@ class TradeRepositoryEloquent implements TradeRepositoryInterface
         $trade->preco_venda = $data['preco_venda'] ?? $trade->preco_venda;
         
         $trade->save();
+        
         return $trade;
     }
 
