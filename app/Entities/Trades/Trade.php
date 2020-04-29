@@ -10,6 +10,7 @@ class Trade extends Model
     protected $fillable = [
         'user_id',
         'entrada_id',
+        'hora_compra',
         'preco_compra',
         'preco_venda',
         'valor',

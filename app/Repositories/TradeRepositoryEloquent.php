@@ -44,6 +44,8 @@ class TradeRepositoryEloquent implements TradeRepositoryInterface
             $trade->status = 1;
             $trade->type_status = 'À Executar';
         }
+
+        $trade->hora_compra = $data['hora_compra'] ?? $trade->hora_compra;
         
         $trade->save();
         return $trade;
