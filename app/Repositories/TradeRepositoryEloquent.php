@@ -45,7 +45,7 @@ class TradeRepositoryEloquent implements TradeRepositoryInterface
             $trade->type_status = 'À Executar';
         }
 
-        $trade->hora_compra = date('H:i:s', strtotime($data['hora_compra'])) ?? $trade->hora_compra;
+        $trade->hora_compra = $data['hora_compra'] ?? $trade->hora_compra;
         $trade->preco_compra = $data['preco_compra'] ?? $trade->preco_compra;
         $trade->preco_venda = $data['preco_venda'] ?? $trade->preco_venda;
         
