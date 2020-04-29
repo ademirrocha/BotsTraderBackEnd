@@ -4,6 +4,7 @@ namespace App\Repositories;
 use Illuminate\Support\Facades\Hash;
 
 use App\Entities\Trades\Trade;
+use App\Entities\Martigails\Martigail;
 
 class TradeRepositoryEloquent implements TradeRepositoryInterface
 {
@@ -40,6 +41,18 @@ class TradeRepositoryEloquent implements TradeRepositoryInterface
         if($trade->status == 1){
             $trade->status = 0;
             $trade->type_status = $data['type_status'];
+
+            if($data['type_status'] == 'Executado'){
+                for ($i=1; $i <= $trade->martigale; $i++) { 
+                    Martigail::create([
+                        'trade_id' => $trade->id,
+                        'hora' => date('H:i:s', strtotime('+'. ($trade->entrada->time * $i).' minutes', strtotime($data['hora_compra']))),
+                        'valor' => pow($trade->valor, $i+1),
+                        'type_status' => 'À Executar'
+                    ]);
+                }
+            }
+
         }else{
             $trade->status = 1;
             $trade->type_status = 'À Executar';

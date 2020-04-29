@@ -14,7 +14,8 @@ class Martigail extends Model
         'preco_venda',
         'valor',
         'type_status',
-        'status'
+        'status',
+        'hora'
     ];
 
     public function trade(){

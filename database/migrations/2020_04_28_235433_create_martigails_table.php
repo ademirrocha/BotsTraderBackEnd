@@ -17,6 +17,7 @@ class CreateMartigailsTable extends Migration
             $table->id();
             $table->bigInteger('trade_id')->unsigned()->default(1);
             $table->time('hora_compra')->nullable();
+            $table->time('hora')->nullable();
             $table->float('preco_compra', 8,2)->nullable();
             $table->float('preco_venda', 8,8)->nullable();
             $table->float('valor', 8,2)->default(2);
