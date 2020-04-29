@@ -25,6 +25,7 @@ class MartingailResource extends JsonResource
             'valor' => $this->valor,
             'type_status' => $this->type_status,
             'status' => $this->status,
+            'hora' => $this->hora,
             'token' => $this->token,
             'trades' => new TraderResource($this->trade)
         
