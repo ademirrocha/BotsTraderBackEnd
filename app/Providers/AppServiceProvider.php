@@ -49,6 +49,11 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Dashboard\DashboardRepositoryInterface::class, 
             \App\Repositories\Dashboard\DashboardRepositoryEloquent::class
         );
+
+        $this->app->bind(
+            \App\Repositories\Martingails\MartingailRepositoryInterface::class, 
+            \App\Repositories\Martingails\MartingailRepositoryEloquent::class
+        );
         
     }
 }
