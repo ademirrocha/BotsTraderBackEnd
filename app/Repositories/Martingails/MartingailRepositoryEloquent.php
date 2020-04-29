@@ -77,6 +77,7 @@ class MartingailRepositoryEloquent implements MartingailRepositoryInterface
                     'martingail_id' => $martingail->id,
                     'type_status' => 'Não Executado'
                 ]);
+               array_diff($martingails, $martingails[$key]);
             }
         }
 
