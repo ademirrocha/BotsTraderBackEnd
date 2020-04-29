@@ -69,6 +69,8 @@ class TraderController extends Controller
 
     public function updateStatus(Request $request)
     {
+
+        return $request;
         try {
             $this->service->updateStatus($request->all());
             return $this->today();
