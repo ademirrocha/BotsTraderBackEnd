@@ -17,6 +17,10 @@ class CreateTradesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned()->default(1);
             $table->bigInteger('entrada_id')->unsigned()->default(1);
+            $table->enum('type',[
+                'trade',
+                'martingale'
+            ])->default('trade');
             $table->time('hora_compra')->nullable();
             $table->float('preco_compra', 8,2)->nullable();
             $table->float('preco_venda', 8,8)->nullable();

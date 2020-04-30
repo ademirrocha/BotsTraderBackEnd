@@ -4,7 +4,7 @@ namespace App\Repositories;
 use Illuminate\Support\Facades\Hash;
 
 use App\Entities\Trades\Trade;
-use App\Entities\Martigails\Martigail;
+use App\Entities\Entradas\Entrada;
 
 class TradeRepositoryEloquent implements TradeRepositoryInterface
 {
@@ -42,15 +42,25 @@ class TradeRepositoryEloquent implements TradeRepositoryInterface
             $trade->status = 0;
             $trade->type_status = $data['type_status'];
 
-            if($data['type_status'] == 'Executado'){
-                for ($i=1; $i <= $trade->martigale; $i++) { 
-                    Martigail::create([
-                        'trade_id' => $trade->id,
-                        'hora' => date('H:i:s', strtotime('+'. ($trade->entrada->time * $i).' minutes', strtotime($data['hora_compra']))),
-                        'valor' => pow($trade->valor, $i+1),
-                        'type_status' => 'À Executar'
+            if($data['type_status'] == 'Executado' && $trade->martigale > 0){
+    
+                    $entrada = Entrada::create([
+                        'ativo_id' => $trade->entrada->ativos->id,
+                        'data' => $trade->entrada->data,
+                        'hora' => date('H:i:s', strtotime('+'. ($trade->entrada->time).' minutes', strtotime($data['hora_compra']))),
+                        'time' => $trade->entrada->time,
+                        'trader' => $trade->entrada->trader
                     ]);
-                }
+
+                    $this->store([
+                        'user_id' => auth()->user()->id,
+                        'entrada_id' => $entrada->id,
+                        'valor' => pow($trade->valor, 2),
+                        'martigale' => $trade->martigale - 1,
+                        'token' => Hash::make(date('m-d-Y H:i:s').substr(fmod(microtime(true), 1), 1)),
+                        'type' => 'martingale'
+                    ]);
+                
             }
 
         }else{

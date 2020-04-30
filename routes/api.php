@@ -59,13 +59,6 @@ Route::middleware('auth:api')->group(function () {
   });
 
 
-  Route::group(['namespace' => 'Martingail', 'prefix' => 'martingails' ], function(){
-
-    Route::put('/update/status', 'MartingailController@updateStatus');
-    Route::get('/', 'MartingailController@index');
-    Route::get('/today', 'MartingailController@today');
-  });
-
  });
 
 });
