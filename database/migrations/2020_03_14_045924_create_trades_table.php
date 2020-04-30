@@ -17,6 +17,7 @@ class CreateTradesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned()->default(1);
             $table->bigInteger('entrada_id')->unsigned()->default(1);
+            $table->bigInteger('trade_reference')->nullable();
             $table->enum('type',[
                 'trade',
                 'martingale'

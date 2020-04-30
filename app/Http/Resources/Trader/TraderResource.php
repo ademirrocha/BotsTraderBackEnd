@@ -21,6 +21,7 @@ class TraderResource extends JsonResource
             'id' => $this->id,
             'user_id' => $this->user_id,
             'type' => $this->type,
+            'trade_reference' => $this->trade_reference,
             'preco_compra' => $this->preco_compra,
             'preco_venda' => $this->preco_venda,
             'valor' => $this->valor,
