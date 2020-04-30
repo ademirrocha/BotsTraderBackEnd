@@ -17,7 +17,9 @@ class Trade extends Model
         'martigale',
         'type_status',
         'status',
-        'token'
+        'token',
+        'type',
+        'trade_reference'
     ];
 
     public function entrada(){
