@@ -55,7 +55,7 @@ class TradeRepositoryEloquent implements TradeRepositoryInterface
                     $this->store([
                         'user_id' => auth()->user()->id,
                         'entrada_id' => $entrada->id,
-                        'valor' => pow($trade->valor, 2),
+                        'valor' => ($trade->valor * 2),
                         'martigale' => $trade->martigale - 1,
                         'token' => Hash::make(date('m-d-Y H:i:s').substr(fmod(microtime(true), 1), 1)),
                         'type' => 'martingale',
