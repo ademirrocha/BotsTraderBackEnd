@@ -71,7 +71,7 @@ class TraderController extends Controller
     {
         try {
             $this->service->updateStatus($request->all());
-            return $this->today();
+            return $this->today($request);
 
         } catch (CustomValidationException $e) {
             return $this->error($e->getMessage(), $e->getDetails());
