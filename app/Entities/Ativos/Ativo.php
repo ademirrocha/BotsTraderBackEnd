@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Entities\Ativos;
+use Illuminate\Http\Request;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Ativo extends Model
 {
+    
     protected $fillable = [
         'nome',
         'nome_in_olymptrade'
