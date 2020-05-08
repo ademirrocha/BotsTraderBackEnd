@@ -18,6 +18,7 @@ class CreateAtivosTable extends Migration
 		Schema::create('ativos', function(Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome');
+            $table->string('nome_in_olymptrade')->nullable();
             $table->timestamps();
             $table->softDeletes();
 		});

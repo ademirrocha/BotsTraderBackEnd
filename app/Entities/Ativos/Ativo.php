@@ -8,7 +8,13 @@ class Ativo extends Model
 {
     protected $fillable = [
         'nome',
+        'nome_in_olymptrade'
     ];
+
+
+    public function nome_index($platform){
+        return $this['nome_in_'.$platform];
+    }
 
 
 

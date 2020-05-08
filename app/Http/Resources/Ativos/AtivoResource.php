@@ -14,13 +14,14 @@ class AtivoResource extends JsonResource
      * @param  Request  $request
      * @return array
      */
-    public function toArray($request)
+    public function toArray(Request $request)
     {
         //return parent::toArray($request);
 
         return [
             'id' => $this->id,
-            'nome' => $this->nome
+            'nome' => $this->nome,
+            'index' => $this->nome_index($request['platform'])
         ];
     }
 }
