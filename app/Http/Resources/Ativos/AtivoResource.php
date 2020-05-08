@@ -16,12 +16,12 @@ class AtivoResource extends JsonResource
      */
     public function toArray($request)
     {
-        //return parent::toArray($request);
+        return parent::toArray($request);
 
         return [
             'id' => $this->id,
             'nome' => $this->nome,
-            'index' => $this->nome_index($request['platform'])
+            'index' => $this->nome_index($this->platform])
         ];
     }
 }
