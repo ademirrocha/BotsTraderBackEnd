@@ -21,7 +21,7 @@ class AtivoResource extends JsonResource
         return [
             'id' => $this->id,
             'nome' => $this->nome,
-            'index' => $this->nome_index($this->platform])
+            'index' => $this->nome_index($this->platform)
         ];
     }
 }
