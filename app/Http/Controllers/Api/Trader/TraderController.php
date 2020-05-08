@@ -151,7 +151,7 @@ class TraderController extends Controller
         return $array;
     }
 
-    public function today() {
+    public function today(Request $request) {
 
         try {
             $trades = $this->service->today();
