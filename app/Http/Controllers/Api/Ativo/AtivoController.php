@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\AtivoServices;
 use Symfony\Component\HttpFoundation\Response;
+use App\Http\Resources\Ativos\AtivoResource;
 
 class AtivoController extends Controller
 {
@@ -20,7 +21,10 @@ class AtivoController extends Controller
     public function index()
     {
         try {
-            return response()->json($this->service->index(), Response::HTTP_OK);
+            $ativos = $this->service->index();
+
+            return AtivoResource::collection($ativos);
+
         } catch (Exception $e) {
             return $this->error($e->getMessage());
         }
