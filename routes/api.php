@@ -6,6 +6,11 @@ use Illuminate\Support\Facades\Route;
 Route::POST('register', 'Api\User\UserController@store');
 Route::POST('login', 'Api\Auth\AuthController@login');
 
+Route::group(['namespace' => 'Api\Ativo', 'prefix' => 'ativos' ], function(){
+
+    Route::get('/', 'AtivoController@index');
+  });
+
 
 
 
@@ -42,10 +47,9 @@ Route::middleware('auth:api')->group(function () {
   });
 
 
-   Route::group(['namespace' => 'Ativo', 'prefix' => 'ativos' ], function(){
+  Route::group(['namespace' => 'Ativo', 'prefix' => 'ativos' ], function(){
 
     Route::POST('/cadastro', 'AtivoController@store');
-    Route::get('/', 'AtivoController@index');
   });
 
 
