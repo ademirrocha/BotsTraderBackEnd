@@ -8,7 +8,7 @@ Route::POST('login', 'Api\Auth\AuthController@login');
 
 Route::group(['namespace' => 'Api\Ativo', 'prefix' => 'ativos' ], function(){
 
-    Route::get('/', 'AtivoController@index');
+    Route::get('/all', 'AtivoController@index');
   });
 
 
