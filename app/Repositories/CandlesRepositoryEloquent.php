@@ -65,8 +65,7 @@ class CandlesRepositoryEloquent implements CandlesRepositoryInterface
 
     public function today()
     {
-
-       // return $trades;
+       return $this->model->where('data', date('Y-m-d'))->get();
     }
 
 }

@@ -93,13 +93,9 @@ class CandlestickController extends Controller
     public function today(Request $request) {
 
         try {
-            $trades = $this->service->today();
-
-            // Sort the array  
-            $trades = $this->orderDataAsc($trades);
-            $trades = $this->orderStatusTrue($trades);
-            //$trades = $this->unique_multidim_array($trades, 'token');
-            return TraderResource::collection($trades);
+            $candles = $this->service->today();
+            
+            return CandlesResource::collection($candles);
             
         } catch (Exception $e) {
             return $this->error($e->getMessage());
