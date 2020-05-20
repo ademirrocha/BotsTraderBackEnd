@@ -50,6 +50,11 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Dashboard\DashboardRepositoryEloquent::class
         );
 
+        $this->app->bind(
+            \App\Repositories\CandlesRepositoryInterface::class, 
+            \App\Repositories\CandlesRepositoryEloquent::class
+        );
+
         
     }
 }

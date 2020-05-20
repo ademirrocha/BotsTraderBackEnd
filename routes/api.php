@@ -62,6 +62,13 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/today', 'TraderController@today');
   });
 
+  Route::group(['namespace' => 'Candlestick', 'prefix' => 'candlesticks' ], function(){
+
+    Route::POST('/cadastro', 'CandlestickController@store');
+    Route::get('/all', 'CandlestickController@index');
+    Route::get('/today', 'CandlestickController@today');
+  });
+
 
  });
 

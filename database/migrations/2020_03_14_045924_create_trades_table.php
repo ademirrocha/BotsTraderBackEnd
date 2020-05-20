@@ -23,7 +23,7 @@ class CreateTradesTable extends Migration
                 'martingale'
             ])->default('trade');
             $table->time('hora_compra')->nullable();
-            $table->float('preco_compra', 8,2)->nullable();
+            $table->float('preco_compra', 8,8)->nullable();
             $table->float('preco_venda', 8,8)->nullable();
             $table->float('valor', 8,2)->default(2);
             $table->integer('martigale')->default(2);
