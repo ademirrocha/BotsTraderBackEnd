@@ -65,7 +65,7 @@ class CandlesRepositoryEloquent implements CandlesRepositoryInterface
 
     public function today()
     {
-       return $this->model->where('data', date('Y-m-d'))->orderBY('data', 'DESC')->get();
+       return $this->model->where('data', date('Y-m-d'))->orderBY('hora', 'DESC')->get();
     }
 
 }
