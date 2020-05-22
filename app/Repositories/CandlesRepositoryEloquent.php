@@ -31,11 +31,19 @@ class CandlesRepositoryEloquent implements CandlesRepositoryInterface
         foreach ($candles as $key => $candle) {
             $candle['ativo_id'] = $candle['ativo']['id'];
 
-            if( $this->model->where('data', $candle['data'])->where('hora', $candle['hora'])->where('ativo_id', $candle['ativo_id'])->exists() ){
-                array_push($candlesticks, 
-                    $this->model->where('data', $candle['data'])
+            $oldCandle = $this->model->where('data', $candle['data'])
                         ->where('hora', $candle['hora'])
-                        ->where('ativo_id', $candle['ativo_id'])->first()
+                        ->where('ativo_id', $candle['ativo_id'])->first();
+
+            if( $oldCandle != null ){
+
+                if($oldCandle->type == null && $candle['type'] != null){
+                    $oldCandle->type = $candle['type'];
+                    $oldCandle->save();
+                }
+
+                array_push($candlesticks, 
+                    $oldCandle
                     );
             }else{
                 array_push($candlesticks, $this->model->create($candle));
