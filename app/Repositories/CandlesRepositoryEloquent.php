@@ -15,7 +15,7 @@ class CandlesRepositoryEloquent implements CandlesRepositoryInterface
 
     public function index()
     {
-        return $this->model->all();
+        return $this->model->orderBy('data', 'DESC')->orderBy('hora', 'DESC')->get();
     }
 
     public function get($id)
