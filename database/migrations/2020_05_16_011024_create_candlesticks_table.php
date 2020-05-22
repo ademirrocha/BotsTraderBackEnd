@@ -18,6 +18,7 @@ class CreateCandlesticksTable extends Migration
             $table->bigInteger('ativo_id')->unsigned()->default(1);
             $table->date('data');
             $table->time('hora');
+            $table->char('type')->nullable();
             $table->float('open', 11,8)->nullable();
             $table->float('close', 11,8)->nullable();
             $table->float('high', 11,8)->nullable();

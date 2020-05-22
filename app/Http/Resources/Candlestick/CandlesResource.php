@@ -25,6 +25,7 @@ class CandlesResource extends JsonResource
             'low' => $this->low,
             'data' => $this->data,
             'hora' => $this->hora,
+            'type' => $this->type,
             'status' => $this->created_at,
             'ativo' => new AtivoResource($this->ativo)
         ];
