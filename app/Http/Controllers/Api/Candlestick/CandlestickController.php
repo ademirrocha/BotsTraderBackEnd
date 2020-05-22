@@ -26,7 +26,10 @@ class CandlestickController extends Controller
     public function index()
     {
         try {
-            return response()->json($this->service->index(), Response::HTTP_OK);
+            $candles = $this->service->index();
+
+            return CandlesResource::collection($candles);
+            
         } catch (Exception $e) {
             return $this->error($e->getMessage());
         }
